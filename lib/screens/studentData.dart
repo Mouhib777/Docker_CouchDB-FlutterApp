@@ -166,7 +166,16 @@ class _StudentDataState extends State<StudentData> {
                                 transitionDuration: Duration.zero,
                                 pageBuilder:
                                     (context, animation, secondaryAnimation) =>
-                                        EditStudent()));
+                                        EditStudent(
+                                          studentId: student.id,
+                                          studentRev: student.rev,
+                                          firstName: student.firstName,
+                                          lastName: student.lastName,
+                                          email: student.email,
+                                          phoneNumber: student.phoneNumber,
+                                          bac: student.bac,
+                                          iqLevel: student.iqLevel,
+                                        )));
                           },
                           child: Text(
                             "Edit",

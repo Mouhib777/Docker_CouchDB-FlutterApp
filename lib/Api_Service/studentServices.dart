@@ -79,4 +79,20 @@ class ApiService {
       throw Exception('Failed to delete student: ${response.reasonPhrase}');
     }
   }
+
+  Future<void> updateStudentById(String studentId, String studentRev,
+      Map<String, dynamic> updatedData) async {
+    final response = await http.put(
+      Uri.parse('$serverUrl/lcs3im_students/$studentId?rev=$studentRev'),
+      headers: {
+        'Authorization': 'Basic ${base64Encode(utf8.encode('admin:password'))}',
+        'Content-Type': 'application/json',
+      },
+      body: json.encode(updatedData),
+    );
+
+    if (response.statusCode != 201) {
+      throw Exception('Failed to update student: ${response.reasonPhrase}');
+    }
+  }
 }
