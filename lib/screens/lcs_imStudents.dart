@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Api_Service/studentServices.dart';
 import 'package:flutter_application_3/Model/student.dart';
 import 'package:flutter_application_3/screens/addStudent.dart';
-import 'package:flutter_application_3/screens/editStudent.dart';
+import 'package:flutter_application_3/screens/studentData.dart';
 import 'package:flutter_application_3/screens/home.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
@@ -66,7 +66,7 @@ class _Lcs_im_StudentsState extends State<Lcs_im_Students> {
                     Navigator.of(context).push(PageRouteBuilder(
                         transitionDuration: Duration.zero,
                         pageBuilder: (context, animation, secondaryAnimation) =>
-                            EditStudent(
+                            StudentData(
                               studentId: student.id,
                               rev: student.rev,
                               studentName:
