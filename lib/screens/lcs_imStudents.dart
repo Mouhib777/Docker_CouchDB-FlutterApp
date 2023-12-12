@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Api_Service/getStudent.dart';
 import 'package:flutter_application_3/Model/student.dart';
 import 'package:flutter_application_3/screens/addStudent.dart';
+import 'package:flutter_application_3/screens/editStudent.dart';
 import 'package:flutter_application_3/screens/home.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
@@ -62,6 +63,13 @@ class _Lcs_im_StudentsState extends State<Lcs_im_Students> {
                 final student = students[index];
                 return InkWell(
                   onTap: () {
+                    Navigator.of(context).push(PageRouteBuilder(
+                        transitionDuration: Duration.zero,
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                            EditStudent(
+                              studentId: student.id,
+                              studentName: student.firstName,
+                            )));
                     EasyLoading.showToast(student.id);
                   },
                   child: ListTile(

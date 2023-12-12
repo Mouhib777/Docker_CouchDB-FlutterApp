@@ -45,4 +45,22 @@ class ApiService {
       throw Exception('Failed to load students: ${response.reasonPhrase}');
     }
   }
+
+  Future<Student> getStudentById(String studentId) async {
+    final response = await http.get(
+      Uri.parse('$serverUrl/$dbName/$studentId'),
+      headers: {
+        'Authorization': 'Basic ${base64Encode(utf8.encode('admin:password'))}',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> data = json.decode(response.body);
+      final Student student = Student.fromJson(data);
+      return student;
+    } else {
+      throw Exception(
+          'Failed to load student details: ${response.reasonPhrase}');
+    }
+  }
 }
