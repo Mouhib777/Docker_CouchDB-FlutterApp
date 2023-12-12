@@ -69,7 +69,7 @@ class _Lcs_im_StudentsState extends State<Lcs_im_Students> {
                             EditStudent(
                               studentId: student.id,
                               studentName:
-                                  "${student.firstName}${student.lastName}",
+                                  "${student.firstName} ${student.lastName}",
                             )));
                     EasyLoading.showToast(student.id);
                   },
