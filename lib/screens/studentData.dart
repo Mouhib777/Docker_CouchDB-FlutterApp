@@ -35,7 +35,6 @@ class _StudentDataState extends State<StudentData> {
       appBar: AppBar(
         foregroundColor: Colors.white,
         title: Text(widget.studentName),
-        actions: [IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.pen))],
       ),
       body: FutureBuilder<Student>(
         future: futureStudent,

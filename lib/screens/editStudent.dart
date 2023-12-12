@@ -53,7 +53,7 @@ class _EditStudentState extends State<EditStudent> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Student Details'),
+        title: Text('Edit student'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -107,7 +107,7 @@ class _EditStudentState extends State<EditStudent> {
                   print('Error updating student: $e');
                 }
               },
-              child: Text('Update User'),
+              child: Text('Update student'),
             ),
           ],
         ),
