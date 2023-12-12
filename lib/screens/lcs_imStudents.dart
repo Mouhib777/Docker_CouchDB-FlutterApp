@@ -52,8 +52,7 @@ class _Lcs_im_StudentsState extends State<Lcs_im_Students> {
               itemCount: students.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  leading: Image.asset(
-                      'assets/your_image.png'), // Replace with your actual image path
+                  leading: Image.asset('assets/your_image.png'),
                   title: Text(
                       '${students[index].lastName}, ${students[index].firstName}'),
                   subtitle: Text('Email: ${students[index].email}'),
