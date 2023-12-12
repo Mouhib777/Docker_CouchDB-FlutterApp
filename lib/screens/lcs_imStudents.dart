@@ -68,6 +68,7 @@ class _Lcs_im_StudentsState extends State<Lcs_im_Students> {
                         pageBuilder: (context, animation, secondaryAnimation) =>
                             EditStudent(
                               studentId: student.id,
+                              rev: student.rev,
                               studentName:
                                   "${student.firstName} ${student.lastName}",
                             )));

@@ -64,17 +64,18 @@ class ApiService {
     }
   }
 
-  Future<void> deleteStudentById(
-    String studentId,
-  ) async {
+  Future<void> deleteStudentById(String studentId, String studentRev) async {
     final response = await http.delete(
-      Uri.parse('$serverUrl/$dbName/$studentId'),
+      Uri.parse('$serverUrl/$dbName/$studentId?rev=$studentRev'),
       headers: {
-        'Authorization': 'Basic ${base64Encode(utf8.encode('admin:passwor'))}',
+        'Authorization': 'Basic ${base64Encode(utf8.encode('admin:password'))}',
       },
     );
-
-    if (response.statusCode != 200) {
+    if (response.statusCode == 200) {
+      print(response.body);
+    } else if (response.statusCode != 200) {
+      print(response.statusCode);
+      print(response.body);
       throw Exception('Failed to delete student: ${response.reasonPhrase}');
     }
   }

@@ -7,8 +7,12 @@ import 'package:flutter_application_3/screens/lcs_imStudents.dart';
 class EditStudent extends StatefulWidget {
   final studentId;
   final studentName;
+  final rev;
   const EditStudent(
-      {super.key, required this.studentId, required this.studentName});
+      {super.key,
+      required this.studentId,
+      required this.studentName,
+      required this.rev});
 
   @override
   State<EditStudent> createState() => _EditStudentState();
@@ -169,14 +173,13 @@ class _EditStudentState extends State<EditStudent> {
                         child: ElevatedButton(
                             onPressed: () async {
                               try {
-                                await apiService
-                                    .deleteStudentById(widget.studentId);
+                                await apiService.deleteStudentById(
+                                    widget.studentId, widget.rev);
                                 Navigator.of(context).push(PageRouteBuilder(
                                     transitionDuration: Duration.zero,
                                     pageBuilder: (context, animation,
                                             secondaryAnimation) =>
                                         Lcs_im_Students()));
-                                Navigator.pop(context);
                               } catch (e) {
                                 print('Error deleting student: $e');
                               }
