@@ -17,11 +17,32 @@ class ApiService {
     );
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body)['rows'];
-      return data.map((json) => Student.fromJson(json)).toList();
+      final List<Student> students = [];
+
+      for (var entry in data) {
+        final docId = entry['id'];
+
+        final docResponse = await http.get(
+          Uri.parse('$serverUrl/lcs3im_students/$docId'),
+          headers: {
+            'Authorization':
+                'Basic ${base64Encode(utf8.encode('admin:password'))}',
+          },
+        );
+
+        if (docResponse.statusCode == 200) {
+          final Map<String, dynamic> docData = json.decode(docResponse.body);
+          final Student student = Student.fromJson(docData);
+          students.add(student);
+        } else {
+          throw Exception(
+              'Failed to load student details: ${docResponse.reasonPhrase}');
+        }
+      }
+
+      return students;
     } else {
-      print(response.statusCode);
-      print(response.body);
-      throw Exception('Failed to load students');
+      throw Exception('Failed to load students: ${response.reasonPhrase}');
     }
   }
 }
