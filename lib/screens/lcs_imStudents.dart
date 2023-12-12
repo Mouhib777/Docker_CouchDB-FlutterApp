@@ -72,7 +72,6 @@ class _Lcs_im_StudentsState extends State<Lcs_im_Students> {
                               studentName:
                                   "${student.firstName} ${student.lastName}",
                             )));
-                    // EasyLoading.showToast(student.id);
                   },
                   child: ListTile(
                     leading: Image.asset('assets/graduated.png'),
