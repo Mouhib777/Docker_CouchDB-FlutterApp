@@ -63,4 +63,17 @@ class ApiService {
           'Failed to load student details: ${response.reasonPhrase}');
     }
   }
+
+  Future<void> deleteStudentById(String studentId, String studentRev) async {
+    final response = await http.delete(
+      Uri.parse('$serverUrl/$dbName/$studentId?rev=$studentRev'),
+      headers: {
+        'Authorization': 'Basic ${base64Encode(utf8.encode('admin:passwor'))}',
+      },
+    );
+
+    if (response.statusCode != 200) {
+      throw Exception('Failed to delete student: ${response.reasonPhrase}');
+    }
+  }
 }
