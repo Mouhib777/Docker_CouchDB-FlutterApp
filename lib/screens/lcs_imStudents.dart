@@ -53,7 +53,7 @@ class _Lcs_im_StudentsState extends State<Lcs_im_Students> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
+            return Text('Error: ya idriss 7el serveur\n ${snapshot.error}');
           } else {
             final List<Student> students = snapshot.data!;
             return ListView.builder(
