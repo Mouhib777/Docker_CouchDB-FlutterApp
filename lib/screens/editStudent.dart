@@ -34,18 +34,115 @@ class _EditStudentState extends State<EditStudent> {
         future: futureStudent,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
             final Student student = snapshot.data!;
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ListTile(
-                  title: Text(student.lastName),
-                  subtitle: Text(student.email),
-                  trailing: Text(student.iqLevel),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Student id : ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 10),
+                        ),
+                        Text(
+                          "${student.id}",
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 60,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Full Name : ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                        Text(
+                          "${student.firstName}${student.lastName}",
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Email : ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                        Text(
+                          "${student.email}",
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Phone number : ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                        Text(
+                          "+216 ${student.phoneNumber}",
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Bac : ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                        Text(
+                          "${student.firstName}${student.lastName}",
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Full Name : ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                        Text(
+                          "${student.firstName}${student.lastName}",
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                  ],
                 ),
               ],
             );
