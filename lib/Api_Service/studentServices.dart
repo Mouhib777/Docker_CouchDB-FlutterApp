@@ -64,9 +64,11 @@ class ApiService {
     }
   }
 
-  Future<void> deleteStudentById(String studentId, String studentRev) async {
+  Future<void> deleteStudentById(
+    String studentId,
+  ) async {
     final response = await http.delete(
-      Uri.parse('$serverUrl/$dbName/$studentId?rev=$studentRev'),
+      Uri.parse('$serverUrl/$dbName/$studentId'),
       headers: {
         'Authorization': 'Basic ${base64Encode(utf8.encode('admin:passwor'))}',
       },

@@ -167,12 +167,19 @@ class _EditStudentState extends State<EditStudent> {
                     SizedBox(
                         width: 80,
                         child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.of(context).push(PageRouteBuilder(
-                                  transitionDuration: Duration.zero,
-                                  pageBuilder: (context, animation,
-                                          secondaryAnimation) =>
-                                      Lcs_im_Students()));
+                            onPressed: () async {
+                              try {
+                                await apiService
+                                    .deleteStudentById(widget.studentId);
+                                Navigator.of(context).push(PageRouteBuilder(
+                                    transitionDuration: Duration.zero,
+                                    pageBuilder: (context, animation,
+                                            secondaryAnimation) =>
+                                        Lcs_im_Students()));
+                                Navigator.pop(context);
+                              } catch (e) {
+                                print('Error deleting student: $e');
+                              }
                             },
                             child: Text("Delete")))
                   ],
