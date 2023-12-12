@@ -28,15 +28,38 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: screenWidth * 0.93,
                 child: ElevatedButton(
                   onPressed: () async {
-                    final response = await http.get(
-                      Uri.parse('http://20.189.116.244:5984'),
-                    );
-                    print(
-                      "Status code: ${response.statusCode}\n${response.body}",
-                    );
-                    EasyLoading.showInfo(
-                        "Status code: ${response.statusCode}\n${response.body}",
-                        duration: Duration(seconds: 12));
+                    try {
+                      // Your HTTP request code here
+                      final response =
+                          await http.get(Uri.parse('your_api_url'));
+
+                      // Process the response
+                      if (response.statusCode == 200) {
+                        // Handle successful response
+                      } else {
+                        // Handle other status codes
+                      }
+                    } on http.ClientException catch (e) {
+                      // Custom message for connection refused error
+                      print(
+                          'Connection refused. Please check your network connection and try again.');
+                      print('Error details: $e');
+                    } catch (e) {
+                      // Handle other exceptions
+                      print('5adem serveur ya idriss: $e');
+                    }
+                    // final response = await http.get(
+                    //   Uri.parse('http://20.189.116.244:5984'),
+                    // );
+                    // print(
+                    //   "Status code: ${response.statusCode}\n${response.body}",
+                    // );
+                    // EasyLoading.showInfo(
+                    //     "Status code: ${response.statusCode}\n${response.body}",
+                    //     duration: Duration(seconds: 12));
+                    // if (response.statusCode != 200) {
+                    //   EasyLoading.showError("7el serveur ya idriss");
+                    // }
                   },
                   child: Text("Test CouchDB Container",
                       style: TextStyle(
