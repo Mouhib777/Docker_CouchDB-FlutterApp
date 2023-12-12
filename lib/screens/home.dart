@@ -29,24 +29,30 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ElevatedButton(
                   onPressed: () async {
                     try {
-                      // Your HTTP request code here
-                      final response =
-                          await http.get(Uri.parse('your_api_url'));
+                      final response = await http
+                          .get(Uri.parse('http://20.189.116.244:5984'));
 
-                      // Process the response
                       if (response.statusCode == 200) {
-                        // Handle successful response
+                        print(
+                          "Status code: ${response.statusCode}\n${response.body}",
+                        );
+                        EasyLoading.showInfo(
+                            "Status code: ${response.statusCode}\n${response.body}",
+                            duration: Duration(seconds: 12));
                       } else {
-                        // Handle other status codes
+                        EasyLoading.showInfo(
+                            "Status code: ${response.statusCode}\n${response.body}",
+                            duration: Duration(seconds: 12));
+                        print(
+                          "Status code: ${response.statusCode}\n${response.body}",
+                        );
                       }
-                    } on http.ClientException catch (e) {
-                      // Custom message for connection refused error
-                      print(
-                          'Connection refused. Please check your network connection and try again.');
-                      print('Error details: $e');
+                    } on http.ClientException catch (http_e) {
+                      print('Connection error : $http_e');
+                      print('Error: $http_e');
                     } catch (e) {
-                      // Handle other exceptions
-                      print('5adem serveur ya idriss: $e');
+                      print('5adem serveur ya idriss\n$e');
+                      EasyLoading.showError('5adem serveur ya idriss\n$e');
                     }
                     // final response = await http.get(
                     //   Uri.parse('http://20.189.116.244:5984'),
