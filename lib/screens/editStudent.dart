@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/Api_Service/getStudent.dart';
 import 'package:flutter_application_3/Model/student.dart';
+import 'package:flutter_application_3/screens/lcs_imStudents.dart';
 
 class EditStudent extends StatefulWidget {
   final studentId;
@@ -39,109 +40,141 @@ class _EditStudentState extends State<EditStudent> {
             return Text('Error: ${snapshot.error}');
           } else {
             final Student student = snapshot.data!;
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            return Column(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Row(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(
-                          "Student id : ",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 10),
+                        Row(
+                          children: [
+                            Text(
+                              "Student id : ",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 10),
+                            ),
+                            Text(
+                              "${student.id}",
+                              style: TextStyle(fontSize: 14),
+                            ),
+                          ],
                         ),
-                        Text(
-                          "${student.id}",
-                          style: TextStyle(fontSize: 14),
+                        SizedBox(
+                          height: 160,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Full Name : ",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                            Text(
+                              "${student.firstName}${student.lastName}",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Email : ",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                            Text(
+                              "${student.email}",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Phone number : ",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                            Text(
+                              "+216 ${student.phoneNumber}",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Baccalauréat : ",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                            Text(
+                              "${student.bac}",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "IQ Level: ",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                            Text(
+                              "${student.iqLevel}",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 100,
                         ),
                       ],
                     ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
                     SizedBox(
-                      height: 60,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "Full Name : ",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                        Text(
-                          "${student.firstName}${student.lastName}",
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    ),
+                        width: 80,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Edit",
+                            style: TextStyle(color: Colors.red),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              side: BorderSide(color: Colors.red)),
+                        )),
                     SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "Email : ",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                        Text(
-                          "${student.email}",
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "Phone number : ",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                        Text(
-                          "+216 ${student.phoneNumber}",
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "Bac : ",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                        Text(
-                          "${student.firstName}${student.lastName}",
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "Full Name : ",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                        Text(
-                          "${student.firstName}${student.lastName}",
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
+                        width: 80,
+                        child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(PageRouteBuilder(
+                                  transitionDuration: Duration.zero,
+                                  pageBuilder: (context, animation,
+                                          secondaryAnimation) =>
+                                      Lcs_im_Students()));
+                            },
+                            child: Text("Delete")))
                   ],
                 ),
               ],
