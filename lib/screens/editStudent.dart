@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/Api_Service/getStudent.dart';
+import 'package:flutter_application_3/Api_Service/studentServices.dart';
 import 'package:flutter_application_3/Model/student.dart';
 import 'package:flutter_application_3/screens/lcs_imStudents.dart';
 
