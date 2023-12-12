@@ -50,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     } on http.ClientException catch (http_e) {
                       print('Connection error : $http_e');
                       print('Error: $http_e');
+                      EasyLoading.showError('5adem serveur ya idriss\n$http_e');
                     } catch (e) {
                       print('5adem serveur ya idriss\n$e');
                       EasyLoading.showError('5adem serveur ya idriss\n$e');
