@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/Api_Service/getStudent.dart';
 import 'package:flutter_application_3/Model/student.dart';
 import 'package:flutter_application_3/screens/addStudent.dart';
 import 'package:flutter_application_3/screens/home.dart';
@@ -45,26 +46,29 @@ class _Lcs_im_StudentsState extends State<Lcs_im_Students> {
         title: Text("LCS3IM Students"),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
+      body: FutureBuilder<List<Student>>(
+        future: ApiService(serverUrl, dbName).getStudents(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else {
+            final List<Student> students = snapshot.data!;
+            return ListView.builder(
               itemCount: students.length,
               itemBuilder: (context, index) {
+                final student = students[index];
                 return ListTile(
-                  leading: Image.asset('assets/your_image.png'),
-                  title: Text(
-                      '${students[index].lastName}, ${students[index].firstName}'),
-                  subtitle: Text('Email: ${students[index].email}'),
-                  trailing: Text('IQ: ${students[index].iqLevel}'),
-                  onTap: () {
-                    // Add any action you want when a student tile is tapped
-                  },
+                  leading: Image.asset('assets/graduated.png'),
+                  title: Text(student.lastName),
+                  subtitle: Text(student.email),
+                  trailing: Text('IQ: ${student.iqLevel}'),
                 );
               },
-            ),
-          ),
-        ],
+            );
+          }
+        },
       ),
     );
   }
