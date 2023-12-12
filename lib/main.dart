@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/screens/login.dart';
+import 'package:flutter_application_3/screens/splash.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 void main() {
@@ -36,6 +37,6 @@ class MyApp extends StatelessWidget {
         builder: EasyLoading.init(),
         title: 'CouchDB',
         theme: myTheme,
-        home: LoginScreen());
+        home: splashScreen());
   }
 }
