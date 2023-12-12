@@ -21,14 +21,14 @@ class Student {
 
   factory Student.fromJson(Map<String, dynamic> json) {
     return Student(
-      id: json['_id'],
-      rev: json['_rev'],
-      firstName: json['firstName'],
-      lastName: json['lastName'],
-      email: json['email'],
-      phoneNumber: json['phoneNumber'],
-      bac: json['bac'],
-      iqLevel: json['iqLevel'],
+      id: json['_id'].toString(),
+      rev: json['_rev'].toString(),
+      firstName: json['firstName'].toString(),
+      lastName: json['lastName'].toString(),
+      email: json['email'].toString(),
+      phoneNumber: json['phoneNumber'].toString(),
+      bac: json['bac'].toString(),
+      iqLevel: json['iqLevel'].toString(),
     );
   }
 }
