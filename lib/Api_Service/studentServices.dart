@@ -29,6 +29,7 @@ class ApiService {
                 'Basic ${base64Encode(utf8.encode('admin:password'))}',
           },
         );
+        
 
         if (docResponse.statusCode == 200) {
           final Map<String, dynamic> docData = json.decode(docResponse.body);
