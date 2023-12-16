@@ -72,7 +72,6 @@ class _AddStudentState extends State<AddStudent> {
       ),
     );
   }
-
   Future<void> addStudent() async {
     final newStudent = {
       'firstName': firstNameController.text,
