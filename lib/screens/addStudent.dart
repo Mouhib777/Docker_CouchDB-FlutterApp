@@ -72,6 +72,7 @@ class _AddStudentState extends State<AddStudent> {
       ),
     );
   }
+
   Future<void> addStudent() async {
     final newStudent = {
       'firstName': firstNameController.text,
@@ -81,7 +82,6 @@ class _AddStudentState extends State<AddStudent> {
       'bac': bacController.text,
       'iqLevel': int.tryParse(iqLevelController.text) ?? 0,
     };
-
     final response = await http.post(
       Uri.parse('$serverUrl/$dbName'),
       headers: {
@@ -90,7 +90,6 @@ class _AddStudentState extends State<AddStudent> {
       },
       body: json.encode(newStudent),
     );
-
     if (response.statusCode == 201) {
       print('Student added successfully.');
       EasyLoading.showInfo(
