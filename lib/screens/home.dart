@@ -31,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     try {
                       final response = await http
                           .get(Uri.parse('http://20.189.116.244:5984'));
-
                       if (response.statusCode == 200) {
                         print(
                           "Status code: ${response.statusCode}\n${response.body}",
