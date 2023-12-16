@@ -54,18 +54,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       print('5adem serveur ya idriss\n$e');
                       EasyLoading.showError('5adem serveur ya idriss\n$e');
                     }
-                    // final response = await http.get(
-                    //   Uri.parse('http://20.189.116.244:5984'),
-                    // );
-                    // print(
-                    //   "Status code: ${response.statusCode}\n${response.body}",
-                    // );
-                    // EasyLoading.showInfo(
-                    //     "Status code: ${response.statusCode}\n${response.body}",
-                    //     duration: Duration(seconds: 12));
-                    // if (response.statusCode != 200) {
-                    //   EasyLoading.showError("7el serveur ya idriss");
-                    // }
+                    final response = await http.get(
+                      Uri.parse('http://20.189.116.244:5984'),
+                    );
+                    print(
+                      "Status code: ${response.statusCode}\n${response.body}",
+                    );
+                    EasyLoading.showInfo(
+                        "Status code: ${response.statusCode}\n${response.body}",
+                        duration: Duration(seconds: 12));
+                    if (response.statusCode != 200) {
+                      EasyLoading.showError("7el serveur ya idriss");
+                    }
                   },
                   child: Text("Test CouchDB Container",
                       style: TextStyle(
